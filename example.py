@@ -71,7 +71,6 @@ Only return the JSON. Do not include any explanation or commentary.
 """
 
 
-
 async def run(mcp_server: MCPServer):
 
     await mcp_server.connect()
@@ -99,7 +98,7 @@ async def run(mcp_server: MCPServer):
 async def main():
     async with MCPServerStdio(
         name="Playwright MCP Server",
-        params={"command": "npx", "args": ["@playwright/mcp@latest"]},
+        params={"command": "npx", "args": ["@playwright/mcp@latest", "--headless"]},
     ) as server:
         trace_id = gen_trace_id()
         with trace(workflow_name="Exodus Restaurant Scraper", trace_id=trace_id):

@@ -73,7 +73,7 @@ async def setup_agent_environment(app):
     # Start MCP Server once
     server = MCPServerStdio(
         name="Playwright MCP Server",
-        params={"command": "npx", "args": ["@playwright/mcp@latest"]},
+        params={"command": "npx", "args": ["@playwright/mcp@latest", "--headless"]},
         cache_tools_list=True,
     )
     await server.connect()
@@ -82,7 +82,7 @@ async def setup_agent_environment(app):
         name="RestaurantLinkFinder",
         instructions=instructions,
         model="gpt-4.1-mini",
-        tools=[WebSearchTool()],
+        #tools=[WebSearchTool()],
         mcp_servers=[server],
         model_settings=ModelSettings(tool_choice="required"),
 
